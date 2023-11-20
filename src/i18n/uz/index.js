@@ -15,10 +15,11 @@ export default {
   save: 'Saqlash',
   cancel: 'Bekor qilish',
   ok: 'Ha',
+  products: 'Mahsulotlar',
   no: 'Yoq',
   do_really_want: 'Siz bu mahsulotni rostan ham o\'chirib tashlamoqchimisiz?',
   delete: `O'chirish`,
-  succcess: 'Muvaffaqiyatli bajarildi!',
+  success: 'Muvaffaqiyatli bajarildi!',
   error: 'Xatolik yuz berdi!'
 
 }

@@ -8,8 +8,6 @@ import 'vue-toast-notification/dist/theme-bootstrap.css'
 import { useToast } from 'vue-toast-notification';
 
 import AddProduct from "./addProduct.vue"
-import { useQuasar } from 'quasar'
-const $q = useQuasar()
 
 const productStorage = productStore()
 const { t } = useI18n()
@@ -23,7 +21,7 @@ const columns = ref([
       align: 'left',
       field: 'name_uz',
       format: val => `${val}`,
-      //  sortable: true
+       sortable: true
    },
    { name: 'cost', align: 'left', label: 'cost', field: 'cost', sortable: true },
    { name: 'created_at', align: 'left', label: 'created_date', field: 'created_date', sortable: true },
@@ -71,7 +69,6 @@ function addProduct(){
 }
 
 function editProduct(props){
-   // productStorage.GET_PRODUCTS_ID()
    toolbar.value = true
    editTypeProduct.value = props
 }
@@ -84,12 +81,11 @@ function confirmDelete(id){
 async function delateProduct(){
    loading.value = true
    await productStorage.DELETE_PRODUCT(confirm_id.value).then(async res => {
-      console.log(res);
-      if(res.status == 200){
+      if(res?.name == "AxiosError"){
+         toast.error(t('error'))
+      }else{
          await productStorage.GET_PRODUCTS()
          toast.success(t('success'));
-      }else{
-         toast.error(t('error'))
       }
    })
    loading.value = false
@@ -113,9 +109,8 @@ async function delateProduct(){
       <q-btn @click="addProduct" color="positive q-mr-md" :label="$t('add')" />
    </div>
    <div class="q-pa-md">
-      {{productStorage.products}}
     <q-table
-      title="Products"
+      :title="t('products')"
       :rows="productStorage.products"
       :columns="columns"
       row-key="name"

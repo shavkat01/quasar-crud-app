@@ -3,7 +3,7 @@ export default {
     id: 'ид',
     name: 'Название',
     cost: 'Стоимость',
-    search: 'Qidirishru',
+    search: 'Поиск',
     address: 'Адрес',
     created_at: 'Дата создания',
     actions: 'Действия',
@@ -11,11 +11,12 @@ export default {
     edit: 'Редактировать',
     save: 'Сохранить',
     cancel: 'Отменить',
+    products: 'Продукты',
     ok: 'Да',
     no: 'нет',
     do_really_want: 'Вы действительно хотите удалить этот продукт?',
     delete: 'Удалить',
-    succcess: 'Выполнено успешно!',
+    success: 'Выполнено успешно!',
     error: 'Произошла ошибка!'
     
   }

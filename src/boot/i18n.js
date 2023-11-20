@@ -4,8 +4,8 @@ import messages from 'src/i18n'
 
 export default boot(({ app }) => {
   const i18n = createI18n({
-    locale: (JSON.parse(localStorage.getItem('lang'))).setlang,
-    fallbackLocale: (JSON.parse(localStorage.getItem('lang'))).setlang,
+    locale: JSON.parse(localStorage.getItem('lang')),
+    fallbackLocale: JSON.parse(localStorage.getItem('lang')),
     globalInjection: true,
     messages
   })

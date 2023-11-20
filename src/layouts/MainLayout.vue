@@ -15,7 +15,7 @@
           Quasar App
         </q-toolbar-title>
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           <div class="q-gutter-md row">
             <q-btn color="primary" :label="selectedLang">
               <q-menu
@@ -32,7 +32,18 @@
               </q-menu>
             </q-btn>
           </div>
-        </div>
+        </div> -->
+          <q-select
+            v-model="locale"
+            :options="localeOptions"
+            @update:model-value="selectedLang"
+            dense
+            borderless
+            emit-value
+            map-options
+            options-dense
+            style="min-width: 50px; margin-right: 10px;"
+          />
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -81,6 +92,8 @@
 import { defineComponent, ref, watch } from 'vue'
 import PagesRoute from 'components/PagesRoute.vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import { useI18n } from 'vue-i18n';
+
 
 const pages = [
   {
@@ -100,12 +113,6 @@ const linksList = [
 
 ]
 
-const langs = [
-  {name: 'UZ', setlang: 'name_uz'},
-  {name: 'UK', setlang: 'name_uk'},
-  {name: 'RU', setlang: 'name_ru'}
-]
-
 export default defineComponent({
   name: 'MainLayout',
 
@@ -115,21 +122,25 @@ export default defineComponent({
   },
 
   setup () {
-    let selectedLang = ref((JSON.parse(localStorage.getItem('lang'))).name)
     const leftDrawerOpen = ref(false)
+    const { locale } = useI18n({ useScope: 'global' })
 
-    function selectLangFun(item){
-      selectedLang.value = item.name
-      localStorage.setItem('lang', JSON.stringify(item))
+    locale.value = JSON.parse(localStorage.getItem('lang'))
+    function selectedLang(item){
+      localStorage.setItem('lang', JSON.stringify(locale.value))
     }
 
     return {
       essentialLinks: linksList,
       pages,
-      selectedLang,
-      selectLangFun,
-      langs,
       leftDrawerOpen,
+      selectedLang,
+      locale,
+      localeOptions: [
+        { value: 'name_uz', label: 'UZ' },
+        { value: 'name_uk', label: 'UK' },
+        { value: 'name_ru', label: 'RU' },
+      ],
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }

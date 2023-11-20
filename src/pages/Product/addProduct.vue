@@ -83,18 +83,19 @@
         loading.value = true
         if(!props.editTypeProduct?.id){
           await productStorage.CREATE_PRODUCT(product).then((res)=>{
-            if(res.status == 200){
-              toast.success(t('success'))
-            }else{
+            if(res?.name == "AxiosError"){
               toast.error(t('error'))
+            }else{
+              toast.success(t('success'))
             }
           })
         }else{      
           await productStorage.UPDATE_PRODUCT({id: props.editTypeProduct?.id, ...product}).then((res)=>{
-            if(res.status == 200){
-              toast.success(t('success'))
+           console.log(res);
+           if(res?.name == "AxiosError"){
+             toast.error(t('error'))
             }else{
-              toast.error(t('error'))
+              toast.success(t('success'))
             }
           })
         }
