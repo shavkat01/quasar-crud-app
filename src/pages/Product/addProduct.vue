@@ -151,6 +151,7 @@
                     option-label="name_uz"
                     :option-value="e => e.id"
                     :dense="dense"
+                    outlined
                     />
                      <p style="color: red;" v-for="error in validate.product_type_id.$errors" :key="error.$uid">{{ $t(error.$message) }}</p>
 

@@ -14,25 +14,6 @@
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
-        <!-- <div class="q-pa-md">
-          <div class="q-gutter-md row">
-            <q-btn color="primary" :label="selectedLang">
-              <q-menu
-                transition-show="scale"
-                transition-hide="scale"
-                auto-close
-              >
-                <q-list v-for="item in langs" :key="item" style="min-width: 100px">
-                  <q-item clickable>
-                    <q-item-section @click="selectLangFun(item)">{{item.name}}</q-item-section>
-                  </q-item>
-                  
-                </q-list>
-              </q-menu>
-            </q-btn>
-          </div>
-        </div> -->
           <q-select
             v-model="locale"
             :options="localeOptions"
@@ -108,7 +89,7 @@ const linksList = [
     title: 'Docs',
     caption: 'quasar.dev',
     icon: 'school',
-    link: '/product'
+    link: '/'
   },
 
 ]

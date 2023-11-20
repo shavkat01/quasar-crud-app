@@ -98,7 +98,7 @@ async function delateProduct(){
 <template>
    <div class="q-py-md" style="display: flex; justify-content:space-between;'">
       <div class="width: 300px; display: flex">
-         <q-input dense v-model="filter" input-class="filter-left" class="q-ml-md">
+         <q-input outlined dense v-model="filter" input-class="filter-left" class="q-ml-md">
             <template v-slot:append>
             <q-icon v-if="filter === ''" name="search" />
             <q-icon v-else name="clear" class="cursor-pointer" @click="clearFilter" />
