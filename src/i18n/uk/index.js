@@ -21,7 +21,9 @@ export default {
   grass: 'Ўсимликлар',
   tree: 'Дарахтлар',
   animal: 'Ёввойи хайвонлар',
-  please_fill_in_the_field: "Илтимос! майдонни тўлдиринг"
+  please_fill_in_the_field: "Илтимос! майдонни тўлдиринг",
+  product: `Mahsulotlar`,
+  kanban: `Kanban`,
 
   
   }

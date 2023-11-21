@@ -22,7 +22,9 @@ export default {
     grass: `Растения`,
     tree: `Деревья`,
     animal: `Дикие животные`,
-    please_fill_in_the_field: "Пожалуйста! заполните поле"
+    please_fill_in_the_field: "Пожалуйста! заполните поле",
+    product: `Mahsulotlar`,
+    kanban: `Kanban`,
 
     
   }

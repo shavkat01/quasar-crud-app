@@ -25,5 +25,7 @@ export default {
   grass: `O'simliklar`,
   tree: `Daraxtlar`,
   animal: `Yovvoyi xayvonlar`,
+  product: `Mahsulotlar`,
+  kanban: `Kanban`,
 
 }

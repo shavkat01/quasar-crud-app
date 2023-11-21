@@ -66,7 +66,7 @@
             </q-item-section>
 
             <q-item-section v-if="toggleLeftDrawer">
-              <q-item-label>{{ page.title }}</q-item-label>
+              <q-item-label>{{ $t(page.title) }}</q-item-label>
               <q-item-label>{{ page.caption }}</q-item-label>
             </q-item-section>
         </q-item>
@@ -82,9 +82,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue'
-import PagesRoute from 'components/PagesRoute.vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n';
 import {useRouter} from "vue-router"
 
@@ -107,11 +105,6 @@ const pages = [
 
 export default defineComponent({
   name: 'MainLayout',
-
-  components: {
-    EssentialLink,
-    PagesRoute
-  },
 
   setup () {
     const toggleLeftDrawer = ref(false)
