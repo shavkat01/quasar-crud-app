@@ -37,9 +37,6 @@
           address: { 
             required: helpers.withMessage(t('please_fill_in_the_field'), required)
           },
-          created_date: { 
-            required: helpers.withMessage(t('please_fill_in_the_field'), required)
-          },
           cost: {
             required: helpers.withMessage(t('please_fill_in_the_field'), required)
           },
@@ -82,6 +79,10 @@
         product.product_type_id = product.product_type_id.id
         loading.value = true
         if(!props.editTypeProduct?.id){
+
+          product.created_date = new Date()
+          console.log(product.created_date);
+
           await productStorage.CREATE_PRODUCT(product).then((res)=>{
             if(res?.name == "AxiosError"){
               toast.error(t('error'))
@@ -100,7 +101,6 @@
             }
           })
         }
-
         loading.value = false
       }
     }
@@ -110,7 +110,6 @@
       <q-card style="max-width: 1000px; min-width: 800px">
         <q-toolbar>
           <q-toolbar-title>{{!props.editTypeProduct?.id ? t('add') : t('edit')}}</q-toolbar-title>
-
           <q-btn flat round dense icon="close" @click="close" />
         </q-toolbar>
       <VForm
@@ -133,22 +132,14 @@
             <div class="row q-pt-md" style="gap: 10px">
                 <div class="col"> 
                   <label for="">{{$t('cost')}}</label>
-                  <q-input outlined square v-model="product.cost" fill-mask="#" :dense="dense" />
+                  <q-input outlined square v-model="product.cost" fill-mask="#" type="number" :dense="dense" />
                     <p style="color: red;" v-for="error in validate.cost.$errors" :key="error.$uid">{{ $t(error.$message) }}</p>
                 </div>
-                <div class="col">
-                  <label for="">{{$t('created_at')}}</label>
-                  <q-input outlined square v-model="product.created_date" :dense="dense" type="datetime-local"  />
-                  <p style="color: red;" v-for="error in validate.created_date.$errors" :key="error.$uid">{{ $t(error.$message) }}</p>
-                
-                </div>
-            </div>
-            <div class="row q-pt-md" style="gap: 10px">
-                <div class="col-6"> 
-                  <label for="">{{$t('type_product')}}</label>
+                <div class="col"> 
+                  <label>{{$t('type_product')}}</label>
                     <q-select v-model="product.product_type_id" 
                     :options="productStorage.products_id" 
-                    :option-label="e => e.name_uz"
+                    option-label="name_uz"
                     :option-value="e => e.id"
                     :dense="dense"
                     outlined
@@ -158,7 +149,7 @@
                         <!-- <v-select v-model="product.product_type_id" style="height" 
                         :get-option-label="el => el[$i18n.locale]"  :reduce="(p) => p.id" 
                         :options="GET_TYPE"/> -->
-                </div>
+                </div>   
             </div>
         </q-card-section>
       </VForm>

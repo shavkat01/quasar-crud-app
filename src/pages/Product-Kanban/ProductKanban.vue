@@ -35,14 +35,14 @@ const thumbStyle = ref({
                         right: '5px',
                         borderRadius: '7px',
                         backgroundColor: 'rgb(197,201,209)',
-                        width: '8px',
+                        width: '5px',
                         opacity: 0.75
                     })
 const barStyle = ref({
                         right: '5px',
                         borderRadius: '9px',
                         backgroundColor: 'rgb(228,230,234)',
-                        width: '8px',
+                        width: '5px',
                         opacity: 0.2
                     })
 
@@ -207,9 +207,9 @@ async function delateProduct(){
             <q-icon v-else name="clear" class="cursor-pointer" @click="clearFilter" />
             </template>
          </q-input>
-         <q-btn @click="filterFun" rounded color="primary q-ml-md" :label="$t('search')" />
+         <q-btn @click="filterFun" color="primary q-ml-md" :label="$t('search')" />
       </div>
-      <q-btn @click="addProduct" rounded color="positive q-mr-md" :label="$t('add')" />
+      <q-btn @click="addProduct" color="positive q-mr-md" :label="$t('add')" />
    </div>
    <div class="q-pa-md">
 
@@ -226,16 +226,16 @@ async function delateProduct(){
                 >
                     <draggable
                         :list="!filtering ? list1 : listFiltered1"
-                        style="display: flex; flex-direction: column; gap: 10px;"
+                        style="height: calc(100vh - 100px); display: flex; flex-direction: column; gap: 10px;"
                         @change="log"
                         @add="add(1)"
-                        :style="cardDragging ? 'height: 100vh' : ''"
                         @start="start()"
                         itemKey="name"
                         group="people"
                         class="dragbble"
 
                     >
+                        <!-- :style="cardDragging ? 'height: 100vh' : ''" -->
                         <template #item="{ element }">
                             <div class="list-group-item">
                                 <q-card class="my-card" flat>
@@ -256,8 +256,8 @@ async function delateProduct(){
                                         />
 
                                         <div class="row no-wrap items-center">
-                                            <div class="col text-h6 ellipsis">
-                                                {{element.name_uz}}
+                                            <div class="col wrap text-h6 card-title">
+                                                {{element.name_uz}}deeeeeee eeeeeeeee
                                             </div>
                                             <div style="width: 33%; display:inline-flex; justify-content:center;" class="col-auto wrap text-grey text-caption q-pt-md">
                                                 <q-icon size="xs" name="place" />
@@ -302,8 +302,7 @@ async function delateProduct(){
                 >
                     <draggable
                         :list="!filtering ? list2 : listFiltered2"
-                        :style="cardDragging ? 'height: 100vh' : ''"
-                        style="display: flex; flex-direction: column; gap: 10px;"
+                        style="height: calc(100vh - 100px); display: flex; flex-direction: column; gap: 10px;"
                         @change="log"
                         @add="add(2)"
                         @start="start()"
@@ -311,6 +310,7 @@ async function delateProduct(){
                         group="people"
 
                     >
+                        <!-- :style="cardDragging ? 'height: 100vh' : ''" -->
                         <template #item="{ element }">
                         <div class="list-group-item">
                             <q-card class="my-card" flat>
@@ -331,7 +331,7 @@ async function delateProduct(){
                                     />
 
                                     <div class="row no-wrap items-center">
-                                        <div class="col text-h6 ellipsis">
+                                        <div class="col text-h6 card-title">
                                             {{element.name_uz}}
                                         </div>
                                         <div style="width: 33%; display:inline-flex; justify-content:center;" class="col-auto wrap text-grey text-caption q-pt-md">
@@ -378,16 +378,16 @@ async function delateProduct(){
                 >
                     <draggable
                         :list="!filtering ? list3 : listFiltered3"
-                        style="display: flex; flex-direction: column; gap: 10px;"
+                        style="height: calc(100vh - 100px); display: flex; flex-direction: column; gap: 10px;"
                         @change="log"
                         @add="add(3)"
-                        :style="cardDragging ? 'height: 100vh' : ''"
                         @start="start()"
                         itemKey="name"
                         group="people"
                     >
                         <template #item="{ element }">
                         <div class="list-group-item">
+                        <!-- :style="cardDragging ? 'height: 100vh' : ''" -->
                             <q-card class="my-card" flat>
                             <div class="header-action" style="position:relative">
                                     <div class="actions" style="position:absolute; z-index:1; right: 0; margin:0">
@@ -406,7 +406,7 @@ async function delateProduct(){
                                     />
 
                                     <div class="row no-wrap items-center">
-                                        <div class="col text-h6 ellipsis">
+                                        <div class="col text-h6 card-title">
                                             {{element.name_uz}}
                                         </div>
                                         <div style="width: 33%; display:inline-flex; justify-content:center;" class="col-auto wrap text-grey text-caption q-pt-md">
@@ -469,6 +469,7 @@ async function delateProduct(){
       padding-right: 50px
    }
     .my-card{
+        cursor: cell;
         .header-action{
             .actions{
                 display: none;
