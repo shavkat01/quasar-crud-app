@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header class="header-style" elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -63,7 +63,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="bodyBackground">
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
@@ -136,11 +136,5 @@ export default defineComponent({
 })
 </script>
 <style >
-  .bodyBackground{
-    background-image: url('src/assets/back.jpg');
-    background-repeat: no-repeat, repeat;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover
-  }
+
 </style>

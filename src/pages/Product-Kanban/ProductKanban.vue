@@ -196,6 +196,8 @@ async function delateProduct(){
 </script>
 
 <template>
+<div class="kanban-background">
+
 <!-- {{ productStorage.products}} -->
    <div class="q-py-md" style="display: flex; justify-content:space-between;'">
       <div class="width: 300px; display: flex">
@@ -457,6 +459,8 @@ async function delateProduct(){
         </q-card-actions>
       </q-card>
     </q-dialog>
+</div>
+
    <!-- / delete dialog  -->
 </template>
 
