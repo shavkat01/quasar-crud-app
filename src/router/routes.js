@@ -9,6 +9,10 @@ const routes = [
         path: '/product',
         component: () => import('src/pages/Product/Product.vue'),
       },
+      {
+        path: '/product-kanban',
+        component: () => import('src/pages/Product-Kanban/ProductKanban.vue'),
+      },
     ]
   },
 

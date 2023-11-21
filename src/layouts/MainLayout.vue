@@ -82,7 +82,13 @@ const pages = [
     // caption: 'quasar.dev',
     icon: 'style',
     route: '/product'
-  }
+  },
+  {
+    title: 'Product-kanban',
+    // caption: 'quasar.dev',
+    icon: 'view_kanban',
+    route: '/product-kanban'
+  },
 ]
 const linksList = [
   {

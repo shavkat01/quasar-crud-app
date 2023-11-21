@@ -20,6 +20,10 @@ export default {
   do_really_want: 'Siz bu mahsulotni rostan ham o\'chirib tashlamoqchimisiz?',
   delete: `O'chirish`,
   success: 'Muvaffaqiyatli bajarildi!',
-  error: 'Xatolik yuz berdi!'
+  error: 'Xatolik yuz berdi!',
+  please_fill_in_the_field: "Iltimos! maydonni to'ldiring",
+  grass: `O'simliklar`,
+  tree: `Daraxtlar`,
+  animal: `Yovvoyi xayvonlar`,
 
 }

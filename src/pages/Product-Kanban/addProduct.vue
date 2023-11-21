@@ -14,7 +14,7 @@
     const props = defineProps(['toolbar', 'editTypeProduct']);
     const emit = defineEmits(['close'])
 
-    const { t } = useI18n()
+    const { t, locale } = useI18n()
     const toast = useToast()
 
 
@@ -87,20 +87,20 @@
               toast.error(t('error'))
             }else{
               toast.success(t('success'))
+              close({getProduct: true})
             }
           })
         }else{      
           await productStorage.UPDATE_PRODUCT({id: props.editTypeProduct?.id, ...product}).then((res)=>{
-           console.log(res);
            if(res?.name == "AxiosError"){
              toast.error(t('error'))
             }else{
               toast.success(t('success'))
+              close({getProduct: true})
             }
           })
         }
 
-        close({getProduct: true})
         loading.value = false
       }
     }
@@ -148,7 +148,7 @@
                   <label for="">{{$t('type_product')}}</label>
                     <q-select v-model="product.product_type_id" 
                     :options="productStorage.products_id" 
-                    option-label="name_uz"
+                    :option-label="e => e.name_uz"
                     :option-value="e => e.id"
                     :dense="dense"
                     outlined
@@ -162,9 +162,9 @@
             </div>
         </q-card-section>
       </VForm>
-        <q-card-actions class="q-mt-lg" align="right">
-            <q-btn class="q-px-lg" color="red" :label="`${$t('cancel')}`" @click="close"/>
-            <q-btn :loading="loading" class="q-px-lg" color="teal" :label="`${$t('save')}`" @click="saveProduct" />
+        <q-card-actions  class="q-mt-lg" align="right">
+            <q-btn style="font-size: 13px; font-weight: 600; padding: 10px; border-radius: 11% " color="negative" :label="`${$t('cancel')}`" @click="close"/>
+            <q-btn style="font-size: 13px; font-weight: 600; padding: 10px; border-radius: 11% " :loading="loading" class="q-px-lg" color="positive" :label="`${$t('save')}`" @click="saveProduct" />
         </q-card-actions>
       </q-card>
     </q-dialog>
