@@ -213,7 +213,7 @@ async function delateProduct(){
    </div>
    <div class="q-pa-md">
 
-    <div style="display: flex; gap: 20px">
+    <div style="width: 100%; gap:10px; display: flex; justify-content:space-between">
             <div class="column-kanban">
                 <p class="list-group-header">{{$t('grass')}} </p>
                 <q-scroll-area

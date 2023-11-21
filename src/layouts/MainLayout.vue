@@ -1,15 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="header-style" elevated>
+    <div class="header-style">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
 
         <q-toolbar-title>
           Quasar App
@@ -23,47 +15,67 @@
             emit-value
             map-options
             options-dense
+            color="negative"
             style="min-width: 50px; margin-right: 10px;"
           />
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
-    </q-header>
+    </div>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+
+
+    <div class="sidebar" :class="toggleLeftDrawer ? 'sidebar-full': '' ">
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item>
+          <q-item-section>
+            <q-icon
+              size="sm"
+              name="menu"
+              style="cursor:pointer"
+              v-if="!toggleLeftDrawer"
+              @click="toggleLeftDrawer = !toggleLeftDrawer"
+            />
+            <div style="display:flex; justify-content:space-between" v-else>
+              <p style="color: #fff; font-size: 20px; margin: 0">Quasar</p>
+              <q-icon
+                size="sm"
+                name="menu"
+                style="cursor:pointer"
+                @click="toggleLeftDrawer = !toggleLeftDrawer"
+              />
+            </div>
+          </q-item-section>
+        </q-item>
       </q-list>
-      <q-list>
-        <q-item-label
-          header
-        >
-          Pages
-        </q-item-label>
-
-        <PagesRoute
+      <q-list
           v-for="page in pages"
           :key="page.title"
-          v-bind="page"
-        />
-      </q-list>
-    </q-drawer>
+      >
+         <q-item
+            clickable
+            tag="a"
+            class="page-data"
+            @click="router.push(page.route)"
+          >
+            <q-item-section
+              v-if="page.icon"
+              avatar
+            >
+              <q-icon :name="page.icon" />
+            </q-item-section>
 
-    <q-page-container>
+            <q-item-section v-if="toggleLeftDrawer">
+              <q-item-label>{{ page.title }}</q-item-label>
+              <q-item-label>{{ page.caption }}</q-item-label>
+            </q-item-section>
+        </q-item>
+      </q-list>
+
+    </div>
+
+
+    <q-page-container :class="!toggleLeftDrawer ? 'sidebar-close' : 'sidebar-open' ">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -74,31 +86,24 @@ import { defineComponent, ref, watch } from 'vue'
 import PagesRoute from 'components/PagesRoute.vue'
 import EssentialLink from 'components/EssentialLink.vue'
 import { useI18n } from 'vue-i18n';
+import {useRouter} from "vue-router"
 
 
 const pages = [
   {
-    title: 'Product',
+    title: 'product',
     // caption: 'quasar.dev',
     icon: 'style',
     route: '/product'
   },
   {
-    title: 'Product-kanban',
+    title: 'kanban',
     // caption: 'quasar.dev',
     icon: 'view_kanban',
     route: '/product-kanban'
   },
 ]
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: '/'
-  },
 
-]
 
 export default defineComponent({
   name: 'MainLayout',
@@ -109,8 +114,9 @@ export default defineComponent({
   },
 
   setup () {
-    const leftDrawerOpen = ref(false)
+    const toggleLeftDrawer = ref(false)
     const { locale } = useI18n({ useScope: 'global' })
+    const router = useRouter()
 
     locale.value = JSON.parse(localStorage.getItem('lang'))
     function selectedLang(item){
@@ -118,9 +124,8 @@ export default defineComponent({
     }
 
     return {
-      essentialLinks: linksList,
       pages,
-      leftDrawerOpen,
+      router,
       selectedLang,
       locale,
       localeOptions: [
@@ -128,13 +133,20 @@ export default defineComponent({
         { value: 'name_uk', label: 'UK' },
         { value: 'name_ru', label: 'RU' },
       ],
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      toggleLeftDrawer
     }
   }
 })
 </script>
-<style >
+<style>
+
+.q-field__native > span{
+  color: #fff;
+}
+.q-select__dropdown-icon{
+  color: #fff;
+}
+
+
 
 </style>
