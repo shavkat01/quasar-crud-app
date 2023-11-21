@@ -63,7 +63,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="bodyBackground">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -135,3 +135,12 @@ export default defineComponent({
   }
 })
 </script>
+<style >
+  .bodyBackground{
+    background-image: url('src/assets/back.jpg');
+    background-repeat: no-repeat, repeat;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover
+  }
+</style>
