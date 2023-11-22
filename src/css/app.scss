@@ -3,9 +3,8 @@
 
 .header-box{
     position: fixed;
-    // box-shadow: 0 4px 24px 0 rgba(34,41,47,.1);
     background: #F8F7FA;
-    padding: 15px 0 15px 0;
+    padding: 15px 0 10px 0;
     width: 100%;
     top: 0;
     z-index: 100;
@@ -13,14 +12,14 @@
 .header-style{
     position: sticky;
     box-shadow: 0 4px 24px 0 rgba(34,41,47,.1);
-    width: calc(100% - 85px);
+    width: calc(100% - 90px);
     background-color: #fff;
     // background-color: #283046;
     left: 50%;
     height: calc(14vh - 12%);
     transform: translateX(-1%);
     border-radius: 10px;
-    padding: 5px 0;
+    padding: 5px 10px;
     // color: white;
     z-index: 100;
     transition: width 0.3s;
@@ -36,6 +35,7 @@
     color: rgb(175, 165, 165);
     transition: width 0.3s;
 }
+
 .sidebar-full{
     transition: width 0.3s;
     width: 250px !important;
@@ -64,8 +64,9 @@
 
 .column-kanban{
     border-radius: 8px;
-    background-color:  #F8F7FA;
-    // height: 100vh;
+    // background-color:  #fff;
+    // background-color:  #F8F7FA;
+    box-shadow: 0 4px 24px 0 rgba(34,41,47,.1);
     display: inline-block;
     gap: 8px;
     // box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
@@ -73,12 +74,12 @@
     
 }
 .list-group{
-    padding: 0 24px;
-    height: calc(100vh - 120px);
+    padding: 0 14px;
+    height: calc(100vh - 100px);
 }
 
 .list-group-header{
-    margin: 10px 0 15px 45px;
+    margin: 15px 0 0px 45px;
     font-size: 20px;
     font-weight: 500;
 }
@@ -86,7 +87,11 @@
     padding: 1rem 1rem;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 0.25rem 1.125rem rgba(75, 70, 92, 0.1);
+    margin: 10px;
+    // background-color: #F8F7FA;
+    // background-color: #d9dde7;
+
+    box-shadow: 0 0.45rem 1.125rem rgba(75, 70, 92, 0.1);
     // box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 }
 

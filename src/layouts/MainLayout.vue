@@ -6,39 +6,101 @@
           <q-toolbar-title>
             Quasar App
           </q-toolbar-title>
-            <!-- <q-select
-              v-model="locale"
-              :options="localeOptions"
-              @update:model-value="selectedLang"
-              dense
-              borderless
-              emit-value
-              map-options
-              options-dense
-              color="negative"
-              style="min-width: 50px; margin-right: 10px;"
-            /> -->
+            <div style='display: flex; gap:5px'>
 
-             <q-btn icon="translate" dense flat>
-              <q-menu
-                transition-show="jump-down"
-                transition-hide="jump-up"
-              >
-                <q-list style="min-width: 70px; text-align: center">
-                  <q-item class="bg-primary" @click="selectedLang({ value: 'name_uz', label: 'UZ' })" clickable v-close-popup>
-                    <q-item-section>UZ</q-item-section>
-                  </q-item>
-                  <q-item class="" @click="selectedLang({ value: 'name_uk', label: 'UK' })" clickable v-close-popup>
-                    <q-item-section>UK</q-item-section>
-                  </q-item>
-                  <q-item class="" @click="selectedLang({ value: 'name_ru', label: 'RU' })" clickable v-close-popup>
-                    <q-item-section>RU</q-item-section>
-                  </q-item>
-                </q-list>
-              </q-menu>
-            </q-btn>
+              <q-btn icon="translate" dense flat>
+                <q-menu
+                  transition-show="jump-down"
+                  transition-hide="jump-up"
+                  :offset="[50, 10]"
+                  auto-close
+                >
+                  
+                  <q-list dense class="q-pa-sm" style="box-shadow: 0 4px 24px 0 rgba(34,41,47,.1); min-width: 70px; text-align: center">
+                    <q-item class="rounded-borders " :class="locale == 'name_uz' ? 'bg-primary text-grey-1': ''" @click="selectedLang({ value: 'name_uz', label: 'UZ' })" clickable>
+                      <q-item-section>Uz</q-item-section>
+                    </q-item>
+                    <q-item class="rounded-borders q-mt-xs" :class="locale == 'name_uk' ? 'bg-primary text-grey-1': ''" @click="selectedLang({ value: 'name_uk', label: 'UK' })" clickable>
+                      <q-item-section>UK</q-item-section>
+                    </q-item>
+                    <q-item class="rounded-borders q-mt-xs" :class="locale == 'name_ru' ? 'bg-primary text-grey-1': ''" @click="selectedLang({ value: 'name_ru', label: 'RU' })" clickable>
+                      <q-item-section>RU</q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-menu>
+              </q-btn>
 
-          <div>Quasar v{{ $q.version }}</div>
+              <q-btn :icon="theme_mode" dense flat>
+                <q-menu
+                  transition-show="jump-down"
+                  transition-hide="jump-up"
+                  :offset="[70, 10]"
+                  auto-close
+                >
+                  
+                  <q-list dense class="q-pa-sm" style="box-shadow: 0 4px 24px 0 rgba(34,41,47,.1); min-width: 70px; text-align: center">
+                    <q-item class="rounded-borders " :class="theme_mode == 'light_mode' ? 'bg-primary text-grey-1': ''" 
+                    @click="changeTheme('light_mode')" clickable>
+                      <q-item-section>
+                        <div style="display:flex; align-items:center; gap:6px">
+                          <q-icon size="xs" name="light_mode"></q-icon> <div> Light </div>  
+                        </div>
+                        </q-item-section>
+                    </q-item>
+                    <q-item class="rounded-borders q-mt-xs" :class="theme_mode == 'mode_night' ? 'bg-primary text-grey-1': ''" 
+                    @click="changeTheme('mode_night')" clickable>
+                      <q-item-section>
+                        <div style="display:flex; align-items:center; gap: 6px">
+                            <q-icon size="xs" name="mode_night"></q-icon> <div style="margin-top: 1px;">Dark</div> 
+                        </div>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-menu>
+              </q-btn>
+
+              <q-btn dense flat>
+                <q-avatar>
+                  <img :src="`https://cdn.quasar.dev/img/avatar4.jpg`">
+                </q-avatar>
+
+
+
+                <q-menu
+                  transition-show="jump-down"
+                  transition-hide="jump-up"
+                  :offset="[243, 10]"
+                  auto-close
+                >
+                  <div class="row no-wrap q-pa-md">
+                    <div class="column">
+                      <div class="text-h6 q-mb-md">Settings</div>
+                      <q-toggle v-model="mobileData" label="Use Mobile Data" />
+                      <q-toggle v-model="bluetooth" label="Bluetooth" />
+                    </div>
+
+                    <q-separator vertical inset class="q-mx-lg" />
+
+                    <div class="column items-center">
+                      <q-avatar size="72px">
+                        <img src="https://cdn.quasar.dev/img/avatar4.jpg">
+                      </q-avatar>
+
+                      <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+
+                      <q-btn
+                        color="primary"
+                        label="Logout"
+                        push
+                        size="sm"
+                        v-close-popup
+                      />
+                    </div>
+                  </div>
+                </q-menu>
+              </q-btn>
+            </div>
+
         </q-toolbar>
       </div>
     </div>
@@ -131,6 +193,7 @@ export default defineComponent({
 
   setup () {
     const toggleLeftDrawer = ref(false)
+    let theme_mode = ref('light_mode')
     const { locale } = useI18n({ useScope: 'global' })
     const router = useRouter()
     const route = useRoute()
@@ -140,19 +203,26 @@ export default defineComponent({
       locale.value = item.value
       localStorage.setItem('lang', JSON.stringify(locale.value))
     }
+      function changeTheme(mode){
+        theme_mode.value = mode
+      }
 
     return {
       pages,
       router,
       route,
       selectedLang,
+      changeTheme,
       locale,
       localeOptions: [
         { value: 'name_uz', label: 'UZ' },
         { value: 'name_uk', label: 'UK' },
         { value: 'name_ru', label: 'RU' },
       ],
-      toggleLeftDrawer
+      toggleLeftDrawer,
+      theme_mode,
+      mobileData: ref(true),
+      bluetooth: ref(false)
     }
   }
 })
