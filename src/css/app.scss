@@ -62,9 +62,11 @@
 }
 
 .footer{
+    position: fixed;
+    bottom: 0;
     background: #F8F7FA;
     padding: 15px;
-    width: 100%;
+    width: calc(100% - 63px);
     display: flex;
     justify-content: space-between;
     div{
