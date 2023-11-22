@@ -1,5 +1,5 @@
 <template>
-  <q-layout style="background: #F8F7FA" view="lHh Lpr lFf">
+  <q-layout style="height: 100vh; background: #F8F7FA" view="lHh Lpr lFf">
     <div class="header-box">
       <div :style="toggleLeftDrawer ? 'width: calc(100% - 280px); transition: width 0.3s;' : ''" class="header-style">
         <q-toolbar>
@@ -160,8 +160,11 @@
     </div>
 
 
-    <q-page-container style="margin-top: 80px" :style="!toggleLeftDrawer ? 'margin-left:60px; transition: margin-left 0.3s;' : 'margin-left:250px; transition: margin-left 0.3s;'">
-      <router-view />
+    <q-page-container class="page-content" 
+      :style="!toggleLeftDrawer ? 'margin-left:60px; transition: margin-left 0.3s;' : 'margin-left:250px; transition: margin-left 0.3s;'">
+      <div>
+        <router-view />
+      </div>
       <div class="footer">
         <div>
           © 2023 , made with ❤️ by Quasar app

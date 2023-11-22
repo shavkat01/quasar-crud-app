@@ -116,7 +116,7 @@ async function delateProduct(){
       row-key="name"
       :filter="filtering"
       :loading="loading"
-      style="font-size: 16px;"
+      style="font-size: 16px; box-shadow: 0 4px 24px 0 rgba(34,41,47,.1);"
     >
       <template v-slot:header-cell="props">
             <!-- color: #847F94 -->

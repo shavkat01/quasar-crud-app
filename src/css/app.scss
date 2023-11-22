@@ -61,12 +61,20 @@
     padding-left: 24px;
 }
 
+.page-content{
+    height: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .footer{
-    position: fixed;
-    bottom: 0;
+    // position: fixed;
+    // bottom: 0;
     background: #F8F7FA;
     padding: 15px;
-    width: calc(100% - 63px);
+    width: 100%;
     display: flex;
     justify-content: space-between;
     div{
@@ -90,7 +98,7 @@
 }
 .list-group{
     padding: 0 14px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
 }
 
 .list-group-header{
