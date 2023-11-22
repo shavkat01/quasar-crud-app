@@ -162,6 +162,14 @@
 
     <q-page-container style="margin-top: 80px" :style="!toggleLeftDrawer ? 'margin-left:60px; transition: margin-left 0.3s;' : 'margin-left:250px; transition: margin-left 0.3s;'">
       <router-view />
+      <div class="footer">
+        <div>
+          © 2023 , made with ❤️ by Quasar app
+        </div>
+        <div>
+          <a href="https://quasar.dev/docs">Documentation</a>
+        </div>
+      </div>
     </q-page-container>
   </q-layout>
 </template>

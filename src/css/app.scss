@@ -41,6 +41,7 @@
     width: 250px !important;
 }
 
+
 .page-data:hover{
     padding-left: 24px;
     transition: padding-left 0.2s;
@@ -55,10 +56,22 @@
     transition: margin-left 0.3s;
 }
 
-
 .active-menu{
     color: #fff;
     padding-left: 24px;
+}
+
+.footer{
+    background: #F8F7FA;
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    div{
+        a{
+            text-decoration: none;
+        }
+    }
 }
   
 
